@@ -13,6 +13,9 @@ const PORT = 3000;
 app.use(cors("*"));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({ message: "Hello from the server!", intro: "it takes .m3u8 and give .mp4" });
+})
 
 app.post("/convert", async (req, res) => {
     try {
