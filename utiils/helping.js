@@ -1,3 +1,11 @@
+const express = require("express");
+const axios = require("axios");
+const fs = require("fs-extra");
+const path = require("path");
+const { exec } = require("child_process");
+const { v4: uuidv4 } = require("uuid");
+const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
+const cors = require("cors");
 async function downloadSegments(m3u8Url, sessionDir) {
     const { data } = await axios.get(m3u8Url);
     const lines = data.split("\n").filter(line => line && !line.startsWith("#"));
